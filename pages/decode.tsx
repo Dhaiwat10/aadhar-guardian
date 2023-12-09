@@ -8,12 +8,12 @@ const Index = () => {
 	const [qrResult, setQrResult] = useState<string>()
 	const [decompressed, setDecompressed] = useState<string>()
 
-	useEffect(() => {
-		if (qrResult) {
-			const decompressed = JSON.parse(qrResult)
-			setDecompressed(JSON.stringify(decompressed, null, 2))
-		}
-	}, [qrResult])
+	// useEffect(() => {
+	// 	if (qrResult) {
+	// 		const decompressed = JSON.parse(qrResult)
+	// 		setDecompressed(JSON.stringify(decompressed, null, 2))
+	// 	}
+	// }, [qrResult])
 
 	return (
 		<Page>
@@ -25,16 +25,24 @@ const Index = () => {
 				}}
 				onResult={(res) => {
 					console.log(res)
-          const text = res?.getText()
-          if (text) {
-            setQrResult(text)
-          }
+					const text = res?.getText()
+					if (text) {
+						setQrResult(text)
+					}
 				}}
 			/>
 
-			{decompressed && <span>{decompressed}</span>}
+			{/* {decompressed && <span>{decompressed}</span>} */}
 
 			<pre>{JSON.stringify(qrResult, null, 2)}</pre>
+
+			<button
+				onClick={() => {
+					navigator.clipboard.writeText(qrResult as string)
+				}}
+			>
+				Copy QR result
+			</button>
 		</Page>
 	)
 }
