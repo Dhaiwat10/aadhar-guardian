@@ -5,4 +5,11 @@ module.exports = {
 	],
 	darkMode: 'class',
 	plugins: [require('tailwindcss-safe-area')],
+	theme: {
+		extend: {
+			colors: {
+				primary: '#716F71',
+			},
+		},
+	},
 }

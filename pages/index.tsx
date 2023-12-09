@@ -1,27 +1,22 @@
+import { Button } from '@/components/button'
 import Page from '@/components/page'
 import Section from '@/components/section'
 import { LogInWithAnonAadhaar, useAnonAadhaar } from 'anon-aadhaar-react'
-import QRCode from 'react-qr-code'
+import { useAccount } from 'wagmi'
 
 const Index = () => {
 	const [aadharState] = useAnonAadhaar()
 
-	console.log({
-		aadharState,
-	})
+	const { address } = useAccount()
 
 	return (
 		<Page>
-			<Section>
-				<LogInWithAnonAadhaar />
-
-				{aadharState.status === 'logged-in' && (
-					<div>
-						<pre>{JSON.stringify(aadharState.pcd, null, 2)}</pre>
-						<QRCode value={JSON.stringify(aadharState.pcd)} />
-					</div>
-				)}
-			</Section>
+			<p className='text-2xl font-medium text-primary'>
+				Lorem ipsum dolor sit amet,
+				consectetur adipiscing elit,
+				sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			</p>
+			<Button className='mb-0 mt-auto'>Let&apos;s get started</Button>
 		</Page>
 	)
 }
