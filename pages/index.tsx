@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react'
 import { LogInWithAnonAadhaar, useAnonAadhaar } from 'anon-aadhaar-react'
 import { useWeb3Modal } from '@web3modal/wagmi/react'
 import { useAccount } from 'wagmi'
+import QRCode from 'qrcode.react'
+import { compressProof } from '@/utils'
 
 enum PageState {
 	splash,
@@ -22,6 +24,7 @@ const Index = () => {
 	const { open: openWeb3Modal } = useWeb3Modal()
 	const [connectButtonPressed, setConnectButtonPressed] = useState(false)
 	const { address } = useAccount()
+	const [compressedProof, setCompressedProof] = useState<string>()
 
 	// once the user has logged in using aadhar and generated a proof:
 	useEffect(() => {
@@ -59,6 +62,13 @@ const Index = () => {
 	useEffect(() => {
 		if (pageState === PageState.qr && anonAadhar.status === 'logged-out') {
 			window.location.reload()
+		}
+	}, [pageState, anonAadhar])
+
+	useEffect(() => {
+		if (pageState === PageState.qr && anonAadhar.status === 'logged-in') {
+			const compressedProof = compressProof(anonAadhar.pcd)
+			setCompressedProof(compressedProof)
 		}
 	}, [pageState, anonAadhar])
 
@@ -159,6 +169,13 @@ const Index = () => {
 						Text explaining what this step does, asking user their intent
 						forward
 					</p> */}
+					{compressedProof && (
+						<QRCode
+							value={compressedProof}
+							size={256}
+							className='absolute top-[18vh] self-center'
+						/>
+					)}
 					<Button className='mt-6'>Tap to Reveal QR Code</Button>
 				</div>
 			)}
