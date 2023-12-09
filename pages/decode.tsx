@@ -8,12 +8,12 @@ const Index = () => {
 	const [qrResult, setQrResult] = useState<string>()
 	const [decompressed, setDecompressed] = useState<string>()
 
-	// useEffect(() => {
-	// 	if (qrResult) {
-	// 		const decompressed = JSON.parse(qrResult)
-	// 		setDecompressed(JSON.stringify(decompressed, null, 2))
-	// 	}
-	// }, [qrResult])
+	useEffect(() => {
+		if (qrResult) {
+			const decompressed = JSON.parse(qrResult)
+			setDecompressed(JSON.stringify(decompressed, null, 2))
+		}
+	}, [qrResult])
 
 	return (
 		<Page>
