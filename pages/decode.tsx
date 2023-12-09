@@ -35,7 +35,7 @@ const Index = () => {
 
 			{/* {decompressed && <span>{decompressed}</span>} */}
 
-			<pre>{JSON.stringify(qrResult, null, 2)}</pre>
+			<pre>{qrResult}</pre>
 
 			<button
 				onClick={() => {
