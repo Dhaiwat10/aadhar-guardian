@@ -32,7 +32,7 @@ const Index = () => {
 				}}
 			/>
 
-			{decompressed && <span>{decompressed}</span>}
+			{decompressed && <span>{JSON.stringify(decompressed, null, 2)}</span>}
 
 			<pre>{qrResult}</pre>
 
