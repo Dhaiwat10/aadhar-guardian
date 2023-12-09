@@ -22,7 +22,7 @@ const Page = ({ title, children }: Props) => (
 			 * Padding top = `appbar` height
 			 * Padding bottom = `bottom-nav` height
 			 */
-			className='mx-auto max-w-screen-md pt-20 pb-16 px-6 sm:pb-0 min-h-screen flex flex-col'
+			className='mx-auto max-w-screen-md pt-20 pb-16 px-6 sm:pb-0 min-h-[95vh] flex flex-col'
 		>
 			{children}
 		</main>
