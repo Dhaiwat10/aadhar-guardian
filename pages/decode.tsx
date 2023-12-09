@@ -25,7 +25,10 @@ const Index = () => {
 				}}
 				onResult={(res) => {
 					console.log(res)
-					setQrResult(res?.getText())
+          const text = res?.getText()
+          if (text) {
+            setQrResult(text)
+          }
 				}}
 			/>
 
