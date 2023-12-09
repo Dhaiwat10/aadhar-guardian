@@ -10,7 +10,7 @@ export const Button = (
 
 	return (
 		<button
-			className={`px-8 py-5 text-primary border-2 text-2xl border-primary rounded-full ${className}`}
+			className={`px-8 py-5 text-white text-2xl rounded-lg shadow bg-gradient-to-b from-secondary to-primary ${className}`}
 			{...remainingProps}
 		>
 			{children}

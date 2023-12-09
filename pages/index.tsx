@@ -10,10 +10,8 @@ const Index = () => {
 
 	return (
 		<Page>
-			<p className='text-2xl font-medium text-primary mt-auto'>
-				Lorem ipsum dolor sit amet,
-				consectetur adipiscing elit,
-				sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			<p className='text-5xl font-medium text-black mt-auto'>
+				Secure Your Aadhaar
 			</p>
 			<Button onClick={() => router.push('/upload-aadhar')} className='mt-12'>Let&apos;s get started</Button>
 		</Page>
