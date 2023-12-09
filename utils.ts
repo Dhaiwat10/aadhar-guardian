@@ -21,3 +21,16 @@ export const compressProof = (proof: AnonAadhaarPCD) => {
 		console.error('Data is too large to fit in a single QR code.')
 	}
 }
+
+export const decompressProof = (base64Compressed: string) => {
+	// Convert the base64 string back to a Uint8Array
+	const compressed = Uint8Array.from(Buffer.from(base64Compressed, 'base64'))
+
+	// Decompress the data
+	const decompressed = pako.ungzip(compressed, { to: 'string' })
+
+	// Convert the string back to JSON
+	const proof = JSON.parse(decompressed)
+
+	return proof
+}
