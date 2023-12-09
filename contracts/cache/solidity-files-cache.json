@@ -1,0 +1,184 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/Users/sahilsen/QuickNode/demo/ethindia/contracts/AnonAadhaarVerifier.sol": {
+      "lastModificationDate": 1702140630972,
+      "contentHash": "d41fe6f32d84622721c2d41227b584a9",
+      "sourceName": "contracts/AnonAadhaarVerifier.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IAnonAadhaarVerifier.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.4"
+      ],
+      "artifacts": [
+        "AnonAadhaarVerifier"
+      ]
+    },
+    "/Users/sahilsen/QuickNode/demo/ethindia/interfaces/IAnonAadhaarVerifier.sol": {
+      "lastModificationDate": 1702138758056,
+      "contentHash": "3b47e60a05c621746a249679f91f8382",
+      "sourceName": "interfaces/IAnonAadhaarVerifier.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.7.0 <0.9.0"
+      ],
+      "artifacts": [
+        "IAnonAadhaarVerifier"
+      ]
+    },
+    "/Users/sahilsen/QuickNode/demo/ethindia/contracts/Vote.sol": {
+      "lastModificationDate": 1702138758040,
+      "contentHash": "6e71d60b395e01cb0784e526bda49b79",
+      "sourceName": "contracts/Vote.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../interfaces/IAnonAadhaarVerifier.sol"
+      ],
+      "versionPragmas": [
+        ">=0.7.0 <0.9.0"
+      ],
+      "artifacts": [
+        "Vote"
+      ]
+    },
+    "/Users/sahilsen/QuickNode/demo/ethindia/contracts/hardhat-dependency-compiler/anon-aadhaar-contracts/contracts/Verifier.sol": {
+      "lastModificationDate": 1702142686943,
+      "contentHash": "2f4eb99a2669182727ee0eaf9ed25a2a",
+      "sourceName": "contracts/hardhat-dependency-compiler/anon-aadhaar-contracts/contracts/Verifier.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "anon-aadhaar-contracts/contracts/Verifier.sol"
+      ],
+      "versionPragmas": [
+        ">0.0.0"
+      ],
+      "artifacts": []
+    },
+    "/Users/sahilsen/QuickNode/demo/ethindia/node_modules/anon-aadhaar-contracts/contracts/Verifier.sol": {
+      "lastModificationDate": 1702142596843,
+      "contentHash": "8a5ab72b03d8340ee4beac99acb8c5ec",
+      "sourceName": "anon-aadhaar-contracts/contracts/Verifier.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.7.0 <0.9.0"
+      ],
+      "artifacts": [
+        "Verifier"
+      ]
+    }
+  }
+}
