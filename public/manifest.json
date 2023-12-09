@@ -1,0 +1,33 @@
+{
+	"name": "Rice Bowl",
+	"short_name": "Rice Bowl",
+	"description": "Fluffless jasmine rice for those cold winter nights",
+	"icons": [
+		{
+			"src": "/images/icon-192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/images/icon-512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		},
+		{
+			"src": "/images/icon-maskable-192.png",
+			"type": "image/png",
+			"sizes": "192x192",
+			"purpose": "maskable"
+		},
+		{
+			"src": "/images/icon-maskable-512.png",
+			"type": "image/png",
+			"sizes": "512x512",
+			"purpose": "maskable"
+		}
+	],
+	"start_url": "/?source=pwa",
+	"orientation": "portrait",
+	"display": "standalone",
+	"scope": "/"
+}
