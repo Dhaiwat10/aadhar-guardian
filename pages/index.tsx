@@ -19,6 +19,7 @@ enum PageState {
 }
 
 const Index = () => {
+	const router = useRouter()
 	const [anonAadhar] = useAnonAadhaar()
 	const [pageState, setPageState] = useState<PageState>(PageState.splash)
 	const { open: openWeb3Modal } = useWeb3Modal()
@@ -74,6 +75,8 @@ const Index = () => {
 
 	return (
 		<Page>
+			<button onClick={() => router.push('/decode')}>Decode</button>
+
 			{pageState == PageState.qr && (
 				<div className='ml-auto mr-0'>
 					<LogInWithAnonAadhaar />
