@@ -38,6 +38,6 @@ export const decompressProof = (base64Compressed: string) => {
 
 		return proof
 	} catch (error) {
-		return error
+		return (error as Error).message
 	}
 }
