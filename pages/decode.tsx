@@ -3,17 +3,18 @@ import { QrReader } from 'react-qr-reader'
 
 import { useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
+import { decompressProof } from '@/utils'
 
 const Index = () => {
 	const [qrResult, setQrResult] = useState<string>()
 	const [decompressed, setDecompressed] = useState<string>()
 
-	// useEffect(() => {
-	// 	if (qrResult) {
-	// 		const decompressed = JSON.parse(qrResult)
-	// 		setDecompressed(JSON.stringify(decompressed, null, 2))
-	// 	}
-	// }, [qrResult])
+	useEffect(() => {
+		if (qrResult) {
+			const decompressed = decompressProof(qrResult)
+			setDecompressed(decompressed)
+		}
+	}, [qrResult])
 
 	return (
 		<Page>
@@ -32,7 +33,7 @@ const Index = () => {
 				}}
 			/>
 
-			{/* {decompressed && <span>{decompressed}</span>} */}
+			{decompressed && <span>{decompressed}</span>}
 
 			<pre>{JSON.stringify(qrResult, null, 2)}</pre>
 
