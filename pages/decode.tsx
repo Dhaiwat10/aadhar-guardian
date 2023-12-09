@@ -9,12 +9,11 @@ const Index = () => {
 	const [qrResult, setQrResult] = useState<string>()
 	const [decompressed, setDecompressed] = useState<string>()
 
-	// useEffect(() => {
-	// 	if (qrResult) {
-	// 		const decompressed = decompressProof(qrResult)
-	// 		setDecompressed(decompressed)
-	// 	}
-	// }, [qrResult])
+	useEffect(() => {
+		if (qrResult) {
+			setDecompressed(decompressProof(qrResult))
+		}
+	}, [qrResult])
 
 	return (
 		<Page>
@@ -33,7 +32,7 @@ const Index = () => {
 				}}
 			/>
 
-			{/* {decompressed && <span>{decompressed}</span>} */}
+			{decompressed && <span>{decompressed}</span>}
 
 			<pre>{qrResult}</pre>
 
