@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="581.477" height="581.477" viewBox="0 0 581.477 581.477">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.702" y1="0.131" x2="0.122" y2="0.79" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#b3b3b3"/>
+    </linearGradient>
+    <filter id="Ellipse_1" x="46" y="46" width="488.768" height="488.768" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#49d59e"/>
+      <stop offset="1" stop-color="#2eb4ab"/>
+    </linearGradient>
+    <filter id="Rectangle_6" x="0" y="0" width="581.477" height="581.477" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Rectangle_5" x="81" y="80" width="419.953" height="419.953" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur-3"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_20" data-name="Group 20" transform="translate(-88 10063)">
+    <g transform="matrix(1, 0, 0, 1, 88, -10063)" filter="url(#Ellipse_1)">
+      <circle id="Ellipse_1-2" data-name="Ellipse 1" cx="229.384" cy="229.384" r="229.384" transform="translate(61 61)" opacity="0.28" fill="url(#linear-gradient)"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 88, -10063)" filter="url(#Rectangle_6)">
+      <rect id="Rectangle_6-2" data-name="Rectangle 6" width="389.953" height="389.953" rx="20" transform="translate(290.74 15) rotate(45)" fill="url(#linear-gradient-2)"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 88, -10063)" filter="url(#Rectangle_5)">
+      <rect id="Rectangle_5-2" data-name="Rectangle 5" width="389.953" height="389.953" rx="20" transform="translate(96 95)" fill="#fff" opacity="0.57"/>
+    </g>
+  </g>
+</svg>
