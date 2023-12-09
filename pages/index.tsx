@@ -24,19 +24,16 @@ const Index = () => {
 	const { address } = useAccount()
 
 	// once the user has logged in using aadhar and generated a proof:
-	// useEffect(() => {
-	// 	if (anonAadhar.status === 'logged-in') {
-	// 		const img = document.getElementById(
-	// 			'shapes',
-	// 		) as HTMLImageElement
-	// 		animate(
-	// 			img,
-	// 			{ scale: 1, rotate: -45 },
-	// 			{ duration: 0.5 },
-	// 		)
-	// 		setPageState(PageState.maskedAadharVerified)
-	// 	}
-	// }, [anonAadhar])
+	useEffect(() => {
+		if (
+			anonAadhar.status === 'logged-in' &&
+			pageState === PageState.uploadAadhar
+		) {
+			const img = document.getElementById('shapes') as HTMLImageElement
+			animate(img, { scale: 1, rotate: -45 }, { duration: 0.5 })
+			setPageState(PageState.maskedAadharVerified)
+		}
+	}, [anonAadhar, pageState])
 
 	// change state to connect wallet after waiting 2 seconds on maskedAadharVerified
 	useEffect(() => {
@@ -48,15 +45,31 @@ const Index = () => {
 	}, [pageState])
 
 	useEffect(() => {
-		if (pageState === PageState.connectWallet && address && connectButtonPressed) {
+		if (
+			pageState === PageState.connectWallet &&
+			address &&
+			connectButtonPressed
+		) {
 			const img = document.getElementById('shapes') as HTMLImageElement
 			animate(img, { scale: 1.3 }, { duration: 0.5 })
 			setPageState(PageState.qr)
 		}
 	}, [pageState, address, connectButtonPressed])
 
+	useEffect(() => {
+		if (pageState === PageState.qr && anonAadhar.status === 'logged-out') {
+			window.location.reload()
+		}
+	}, [pageState, anonAadhar])
+
 	return (
 		<Page>
+			{pageState == PageState.qr && (
+				<div className='ml-auto mr-0'>
+					<LogInWithAnonAadhaar />
+				</div>
+			)}
+
 			<img
 				src='/images/shapes.svg'
 				alt='Shapes'
@@ -97,8 +110,8 @@ const Index = () => {
 						forward
 					</p>
 					<div className='mx-auto w-fit mt-6'>
-						{/* <LogInWithAnonAadhaar /> */}
-						<Button
+						<LogInWithAnonAadhaar />
+						{/* <Button
 							onClick={() => {
 								const img = document.getElementById(
 									'shapes',
@@ -108,7 +121,7 @@ const Index = () => {
 							}}
 						>
 							Upload Aadhar
-						</Button>
+						</Button> */}
 					</div>
 				</div>
 			)}
