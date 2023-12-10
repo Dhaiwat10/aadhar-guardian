@@ -19,6 +19,6 @@
 		},
 		"incremental": true
 	},
-	"exclude": ["node_modules"],
+	"exclude": ["node_modules", "contracts"],
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
