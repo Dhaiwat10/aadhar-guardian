@@ -57,12 +57,21 @@ const Index = () => {
 		}
 	}, [pageState, anonAadhar])
 
+	const [qrValiditySeconds, setQrValiditySeconds] = useState<number>(120)
+
+	const isQrValid = qrValiditySeconds > 0
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setQrValiditySeconds((prevSeconds) => prevSeconds - 1)
+		}, 1000)
+		return () => clearInterval(interval)
+	}, [])
+
 	return (
 		<Page>
-			<button onClick={() => router.push('/decode')}>Decode</button>
-
 			{pageState == PageState.qr && (
-				<div className='ml-auto mr-0'>
+				<div className='ml-auto right-8 absolute top-12'>
 					<LogInWithAnonAadhaar />
 				</div>
 			)}
@@ -102,23 +111,55 @@ const Index = () => {
 
 			{pageState === PageState.uploadAadhar && (
 				<div className='flex flex-col mt-auto'>
-					<p className='text-black shadow px-4 py-6 rounded-lg text-xl'>
-						Text explaining what this step does, asking user their intent
-						forward
-					</p>
+					<div className='shadow px-4 py-6'>
+						<label className='text-black rounded-lg text-xl font-medium'>
+							I want to prove my:
+						</label>
+
+						<div className='flex flex-row'>
+							<label>
+								<input type='checkbox' defaultChecked disabled />
+								<span className='ml-2'>Age</span>
+							</label>
+							<label className='ml-4'>
+								<input type='checkbox' disabled />
+								<span className='ml-2 opacity-20'>Name</span>
+							</label>
+							<label className='ml-4'>
+								<input type='checkbox' disabled />
+								<span className='ml-2 opacity-20'>Location</span>
+							</label>
+						</div>
+
+						<div className='relative group inline-block mt-4'>
+							<button
+								className='px-2 py-1 border shadow rounded-full cursor-pointer text-sm'
+								onClick={() => {
+									const tooltip = document.getElementById(
+										'tooltip',
+									) as HTMLElement
+									tooltip.style.display = 'block'
+									setTimeout(() => {
+										tooltip.style.display = 'none'
+									}, 3000)
+								}}
+							>
+								ℹ️ Learn More
+							</button>
+							<div
+								id='tooltip'
+								className='absolute left-0 z-10 hidden mt-2 w-56 text-sm bg-white border border-gray-200 rounded-lg shadow-lg'
+							>
+								<p className='p-4'>
+									Currently, only location proof is supported, but future
+									versions of the Anon Aadhar SDK will have a wider range of
+									support.
+								</p>
+							</div>
+						</div>
+					</div>
 					<div className='mx-auto w-fit mt-6'>
 						<LogInWithAnonAadhaar />
-						{/* <Button
-							onClick={() => {
-								const img = document.getElementById(
-									'shapes',
-								) as HTMLImageElement
-								animate(img, { scale: 1, rotate: -45 }, { duration: 0.5 })
-								setPageState(PageState.maskedAadharVerified)
-							}}
-						>
-							Upload Aadhar
-						</Button> */}
 					</div>
 				</div>
 			)}
@@ -133,24 +174,53 @@ const Index = () => {
 
 			{pageState === PageState.qr && (
 				<div className='flex flex-col mt-auto'>
-					{/* <p className='text-black shadow px-4 py-6 rounded-lg text-xl'>
-						Text explaining what this step does, asking user their intent
-						forward
-					</p> */}
 					{compressedProof && (
-						<QRCode
-							value={compressedProof}
-							size={256}
-							className='absolute top-[18vh] self-center'
-						/>
+						<>
+							{isQrValid ? (
+								<QRCode
+									value={compressedProof}
+									size={256}
+									className='absolute top-[18vh] self-center'
+								/>
+							) : (
+								<p className='text-black text-4xl font-medium absolute top-[28vh] self-center'>
+									❗️QR Code Expired
+								</p>
+							)}
+						</>
 					)}
-					<Button className='mt-6'>Tap to Reveal QR Code</Button>
+
+					<Button
+						onClick={() => {
+							if (qrValiditySeconds <= 0) {
+								window.localStorage.clear()
+								window.location.reload()
+							}
+						}}
+						className='mt-6'
+					>
+						{qrValiditySeconds > 0 ? (
+							<p>
+								This QR is only valid for {Math.floor(qrValiditySeconds / 60)}m{' '}
+								{qrValiditySeconds % 60}s
+							</p>
+						) : (
+							<p>Regenerate proof</p>
+						)}
+					</Button>
 				</div>
 			)}
 
 			<p className='mt-6 mx-auto text-gray-500'>
 				Made with ❤️ at EthIndia 2023 🇮🇳
 			</p>
+
+			<button
+				onClick={() => router.push('/decode')}
+				className='absolute bottom-6 shadow rounded-lg w-fit px-4 py-2 opacity-10 self-center'
+			>
+				Admin panel 🤫
+			</button>
 		</Page>
 	)
 }
