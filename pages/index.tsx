@@ -5,8 +5,6 @@ import { useRouter } from 'next/router'
 import { animate } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { LogInWithAnonAadhaar, useAnonAadhaar } from 'anon-aadhaar-react'
-import { useWeb3Modal } from '@web3modal/wagmi/react'
-import { useAccount } from 'wagmi'
 import QRCode from 'qrcode.react'
 import { compressProof } from '@/utils'
 
@@ -14,7 +12,6 @@ enum PageState {
 	splash,
 	uploadAadhar,
 	maskedAadharVerified,
-	connectWallet,
 	qr,
 }
 
@@ -22,9 +19,6 @@ const Index = () => {
 	const router = useRouter()
 	const [anonAadhar] = useAnonAadhaar()
 	const [pageState, setPageState] = useState<PageState>(PageState.splash)
-	const { open: openWeb3Modal } = useWeb3Modal()
-	const [connectButtonPressed, setConnectButtonPressed] = useState(false)
-	const { address } = useAccount()
 	const [compressedProof, setCompressedProof] = useState<string>()
 
 	// once the user has logged in using aadhar and generated a proof:
@@ -43,22 +37,12 @@ const Index = () => {
 	useEffect(() => {
 		if (pageState === PageState.maskedAadharVerified) {
 			setTimeout(() => {
-				setPageState(PageState.connectWallet)
+				const img = document.getElementById('shapes') as HTMLImageElement
+				animate(img, { scale: 1.3 }, { duration: 0.5 })
+				setPageState(PageState.qr)
 			}, 2000)
 		}
 	}, [pageState])
-
-	useEffect(() => {
-		if (
-			pageState === PageState.connectWallet &&
-			address &&
-			connectButtonPressed
-		) {
-			const img = document.getElementById('shapes') as HTMLImageElement
-			animate(img, { scale: 1.3 }, { duration: 0.5 })
-			setPageState(PageState.qr)
-		}
-	}, [pageState, address, connectButtonPressed])
 
 	useEffect(() => {
 		if (pageState === PageState.qr && anonAadhar.status === 'logged-out') {
@@ -147,25 +131,6 @@ const Index = () => {
 				</>
 			)}
 
-			{pageState === PageState.connectWallet && (
-				<div className='flex flex-col mt-auto'>
-					<p className='text-black shadow px-4 py-6 rounded-lg text-xl'>
-						Text explaining what this step does, asking user their intent
-						forward
-					</p>
-					<div className='mx-auto w-fit mt-6'>
-						<Button
-							onClick={async () => {
-								setConnectButtonPressed(true)
-								await openWeb3Modal()
-							}}
-						>
-							Connect Wallet
-						</Button>
-					</div>
-				</div>
-			)}
-
 			{pageState === PageState.qr && (
 				<div className='flex flex-col mt-auto'>
 					{/* <p className='text-black shadow px-4 py-6 rounded-lg text-xl'>
@@ -183,7 +148,9 @@ const Index = () => {
 				</div>
 			)}
 
-			<p className='mt-6 mx-auto text-gray-500'>Made with ❤️ at EthIndia 2023 🇮🇳</p>
+			<p className='mt-6 mx-auto text-gray-500'>
+				Made with ❤️ at EthIndia 2023 🇮🇳
+			</p>
 		</Page>
 	)
 }
