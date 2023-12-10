@@ -1,5 +1,5 @@
 <p align="center">
-	<img alt="Aadhaar Shield" src="public/images/icon-512.png" width="90">
+	<img alt="Aadhaar Shield" src="public/images/image-512.png" width="90">
 	<h2 align="center">Aadhaar Shield</h2>
 </p>
 
