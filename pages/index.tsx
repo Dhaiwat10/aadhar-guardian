@@ -182,6 +182,8 @@ const Index = () => {
 					<Button className='mt-6'>Tap to Reveal QR Code</Button>
 				</div>
 			)}
+
+			<p className='mt-6 mx-auto text-gray-500'>Made with ❤️ at EthIndia 2023 🇮🇳</p>
 		</Page>
 	)
 }

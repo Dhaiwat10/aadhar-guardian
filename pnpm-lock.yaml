@@ -44,6 +44,9 @@ dependencies:
   react-qr-reader:
     specifier: 3.0.0-beta-1
     version: 3.0.0-beta-1(react-dom@18.2.0)(react@18.2.0)
+  snarkjs:
+    specifier: ^0.7.2
+    version: 0.7.2
   viem:
     specifier: ^1.19.11
     version: 1.19.11(typescript@5.2.2)
